@@ -1,0 +1,26 @@
+
+<!-- this will count total number of books available in the store -->
+		{{book_count}}
+
+
+
+<!-- list or display all book parameters -->
+	{% for book in books %}
+  		{{book.title}} 
+	    {{book.author}}
+	    {{book.publisher}}
+	    {{book.description}}
+	    {{book.status}}
+	    {{book.price}}
+	    {{book.category_books}}
+    	<a href="{% url 'appblog:detail' pk=book.id %}">View Detail</a>
+    {% endfor %}
+
+
+<!-- Add book -->
+
+ 	<p> <form  method="post" action="." enctype="multipart/form-data">
+      	{{form.as_p}}
+       	{% csrf_token %}</p>
+       <p><button type="submit" class="btn btn-success">Submit</button></p>
+    </form>

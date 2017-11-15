@@ -1,0 +1,50 @@
+		
+		<!-- To add comment on each book in detail page -->
+		
+		<p> <form action="{% url 'appblog:comment' pk=book.id %}"  method="post">
+           	{{form.as_p}}
+           	{% csrf_token %}</p>
+           	<p><button type="submit" class="btn btn-success">Submit</button></p>
+        </form>
+
+
+        <!-- To display the comment on each book -->
+         {% for comment in book.bookcomment_set.all %}
+         	<h1 style="font-size:80%;">Name of the User :<strong> {{comment.person_name}}</strong></h1>{{comment.email}}
+         	<h2><p><strong><h2 style="font-size:80%;"user comment:</strong> <mark>{{comment.body}}</mark></p></h2><small> {{comment.date}}</small>
+         		</hr>
+         {% endfor %}
+
+         <!-- To update the status of book  -->
+      		<form action="{% url 'appblog:update' pk=book.id %}" method="post">
+		        {{form1.as_p}}
+		        {% csrf_token %}
+		        <p><button type="submit" class="btn btn-success">update</button>
+	       </form>
+
+         <!-- To update the rating of book  -->
+          <form action="{% url 'appblog:rating' pk=book.id %}" method="post">
+            {{form2.as_p}}
+            {% csrf_token %}
+            <p><button type="submit" class="btn btn-success">update</button>
+         </form>
+
+
+
+         <div class="row">
+      <div class='col-sm-12 col-md-12 col-lg-12' >   
+        <form action="{% url 'appblog:like' pk=book.id %}" method='get'>
+         {% csrf_token %}
+         <button type="submit" class="btn btn-danger"  >like </button>
+        </form>
+        <br>
+      </div>
+    </div>
+
+
+
+
+    <form action="{% url 'appblog:delete' pk=book.id %}" method='get'>
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Delete2</button>
+      </form>

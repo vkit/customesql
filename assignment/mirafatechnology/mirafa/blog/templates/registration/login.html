@@ -1,0 +1,11 @@
+<body>
+  <h1>Login</h1>
+  <form id="login_id" method="post" action="/blog/login/">
+    {% csrf_token %}
+    Username: <input type="text" name="username"  value=""/>
+    <br/>
+    Password: <input type="password" name="password" value=""/>
+    <br/>
+    <input type="submit" value="Login" />
+  </form>
+</body>
